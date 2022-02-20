@@ -11,13 +11,10 @@ type Event struct {
 	Message string `json:"Message"`
 }
 
-type SupportCase struct {
-  MyCaseID string `json:"Case:"`
-  MyMessage string `json:"Message:"`
-}
+type SupportCase Event
 
 func HandleRequest(ctx context.Context, e Event) (SupportCase, error) {
-  return SupportCase{MyCaseID: e.Case, MyMessage: fmt.Sprintf("%sassigned...",  e.Message)}, nil
+  return SupportCase{Case: e.Case, Message: fmt.Sprintf("%sassigned...",  e.Message)}, nil
 }
 
 func main() {
